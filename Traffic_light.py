@@ -30,10 +30,10 @@ if calculation > 0 and remainder > 0:
         if point < green_zone and point >= yellow_zone and remainder > 0:
             print("\033[33m{}".format('Yellow'))                              # Красим в жёлтый
             print(point)
-        if point < 7 and remainder > 0:                                   
+        if point <=0 and remainder > 0:                                   
             print("\033[37m{}".format('White'))                               # Красим в белый
             print(point)
-        if remainder <= 0:
+        if point > 0 and point <= yellow_zone and remainder > 0:
             print("\33[31m{}".format('Red'))                                  # Красим в красный
             print(point)
     print('Проебали заказ материалов')
