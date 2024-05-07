@@ -23,14 +23,17 @@ if calculation > 0 and remainder > 0:
         date_int = int((date_of - today).days)                                # Разница дней (числом)
         print(remainder)
         point = date_int - supply                                             # Считаем дни минус срок поставки
-        #print(point)
+
         if point >= green_zone and remainder > 0:
             print("\033[32m{}".format('Green'))                               # Красим в зелёный
             print(point)
         if point < green_zone and point >= yellow_zone and remainder > 0:
             print("\033[33m{}".format('Yellow'))                              # Красим в жёлтый
             print(point)
-        if point < 7 and remainder >= 0:                                   
-            print("\033[31m{}".format('Red'))                                 # Красим в красный
+        if point < 7 and remainder > 0:                                   
+            print("\033[37m{}".format('White'))                               # Красим в белый
+            print(point)
+        if remainder <= 0:
+            print("\33[31m{}".format('Red'))                                  # Красим в красный
             print(point)
     print('Проебали заказ материалов')
