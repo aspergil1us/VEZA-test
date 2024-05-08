@@ -6,13 +6,14 @@ stock = int(input('Склад: '))                                              
 nzp = int(input('НЗП: '))                                                     # Остаток НЗП
 provider = int(input('Поставщик: '))                                          # Заказано у поставщиков
 calculation = stock + nzp + provider - need - order_point                     # Расчет значений (Расчет)
-remainder = stock + nzp - need                                                # Свободный остаток (Расчет)
+remainder = stock + nzp + provider - need                                     # Свободный остаток (Расчет)
 need_order = 0
 supply = int(input('Срок поставки: '))                                        # Срок поставки
 green_zone = 14                                                               # Устанавливаемое значение зеленой зоны
 yellow_zone = 7                                                               # Устанавливаемое значение желтой зоны
 
-if calculation > 0 and remainder > 0:
+if remainder <= 0:
+    remainder = stock + nzp + provider
     need = 0
     while remainder > 0:
         need = int(input('Потребность по заказу: '))
@@ -24,6 +25,7 @@ if calculation > 0 and remainder > 0:
         print(remainder)
         point = date_int - supply                                             # Считаем дни минус срок поставки
 
+        if point < 0 and remainder
         if point >= green_zone and remainder > 0:
             print("\033[32m{}".format('Green'))                               # Красим в зелёный
             print(point)
